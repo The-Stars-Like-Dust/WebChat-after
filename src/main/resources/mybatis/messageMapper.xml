@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--Chat项目    2023/12/1  15:28:00-->
+<mapper namespace="com.example.springbootchat.model.mapperInterface.MessageMapper">
+    <resultMap id="message" type="com.example.springbootchat.model.entry.Message">
+        <result column="message" property="text"/>
+        <result column="datetime" property="time"/>
+        <association property="user1" column="pid"
+                     select="com.example.springbootchat.model.mapperInterface.UserMapper.selectUserById"/>
+        <association property="user2" column="vid"
+                     select="com.example.springbootchat.model.mapperInterface.UserMapper.selectUserById"/>
+    </resultMap>
+    <delete id="deleteMessage">
+        delete
+        from messages
+        where (pid = #{id1} and vid = #{id2})
+           or (pid = #{id2} and vid = #{id1})
+    </delete>
+    <select id="selectAllMessageByU1IdAndU2Id" resultMap="message">
+        select message, pid, vid, datetime
+        from messages
+        where pid = #{id1}
+          and vid = #{id2}
+    </select>
+    <select id="selectAllMessageByU1IdAndU2IdAndTime" resultMap="message">
+        select message, pid, vid, datetime
+        from messages
+        where pid = #{id1}
+          and vid = #{id2}
+          and datetime > #{time}
+    </select>
+    <insert id="insertMessage" parameterType="map">
+        insert into messages(id, pid, vid, message, datetime)
+        VALUES (null, #{pid}, #{vid}, #{message}, #{datetime});
+    </insert>
+</mapper>
