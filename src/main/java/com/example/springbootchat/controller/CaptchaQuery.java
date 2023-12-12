@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.PrintWriter;
+
 @CrossOrigin
 @Controller()
 @RequestMapping("/captcha")
@@ -22,7 +24,7 @@ public class CaptchaQuery {
     }
 
     @GetMapping("/verify")
-    public boolean verifyCaptcha(String code) {
-        return lineCaptcha.verify(code);
+    public void verifyCaptcha(String code, PrintWriter out) {
+        out.println(lineCaptcha.verify(code));
     }
 }
