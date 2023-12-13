@@ -1,30 +1,33 @@
 package com.example.springbootchat.controller;
 
 import cn.hutool.captcha.LineCaptcha;
-import jakarta.annotation.Resource;
 import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @Controller()
 @RequestMapping("/captcha")
 public class CaptchaQuery {
-    @Resource(name = "lineCaptcha")
-    private LineCaptcha lineCaptcha;
-
     @GetMapping("/get")
-    public void getCaptcha(ServletOutputStream outputStream) {
+    public void getCaptcha(ServletOutputStream outputStream, HttpSession session) {
+        LineCaptcha lineCaptcha = (LineCaptcha) session.getAttribute("lineCaptcha");
+        if (lineCaptcha == null) {
+            lineCaptcha = new LineCaptcha(150, 70, 5, 300);
+            session.setAttribute("lineCaptcha", lineCaptcha);
+        }
         lineCaptcha.createCode();
         lineCaptcha.write(outputStream);
     }
 
-    @GetMapping("/verify")
+    @GetMapping("/verify/{code}")
     @ResponseBody
-    public boolean verifyCaptcha(String code) {
+    public boolean verifyCaptcha(@PathVariable("code") String code, HttpSession session) {
+        LineCaptcha lineCaptcha = (LineCaptcha) session.getAttribute("lineCaptcha");
+        if (lineCaptcha == null) {
+            return false;
+        }
         return lineCaptcha.verify(code);
     }
 }
