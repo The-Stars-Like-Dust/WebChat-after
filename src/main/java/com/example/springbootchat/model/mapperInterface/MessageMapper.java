@@ -1,7 +1,7 @@
 package com.example.springbootchat.model.mapperInterface;
 
 
-import com.example.springbootchat.model.entry.Message;
+import com.example.springbootchat.model.entity.Message;
 
 import java.util.List;
 import java.util.Map;

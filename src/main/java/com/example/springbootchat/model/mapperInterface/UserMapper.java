@@ -1,6 +1,6 @@
 package com.example.springbootchat.model.mapperInterface;
 
-import com.example.springbootchat.model.entry.User;
+import com.example.springbootchat.model.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--Chat项目    2023/12/2  23:31:54-->
 <mapper namespace="com.example.springbootchat.model.mapperInterface.FriendRequestMapper">
-    <resultMap id="friendRequest" type="com.example.springbootchat.model.entry.friendRequest">
+    <resultMap id="friendRequest" type="com.example.springbootchat.model.entity.friendRequest">
         <result column="datetime" property="requestTime"/>
         <result column="first_message" property="firstMessage"/>
         <association property="vUser"

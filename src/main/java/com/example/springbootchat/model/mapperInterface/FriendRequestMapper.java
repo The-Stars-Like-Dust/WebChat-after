@@ -1,6 +1,6 @@
 package com.example.springbootchat.model.mapperInterface;
 
-import com.example.springbootchat.model.entry.friendRequest;
+import com.example.springbootchat.model.entity.friendRequest;
 
 import java.util.List;
 import java.util.Map;

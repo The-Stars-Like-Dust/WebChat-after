@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--Chat项目    2023/12/1  15:28:00-->
 <mapper namespace="com.example.springbootchat.model.mapperInterface.MessageMapper">
-    <resultMap id="message" type="com.example.springbootchat.model.entry.Message">
+    <resultMap id="message" type="com.example.springbootchat.model.entity.Message">
         <result column="message" property="text"/>
         <result column="datetime" property="time"/>
         <association property="user1" column="pid"

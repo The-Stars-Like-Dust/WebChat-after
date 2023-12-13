@@ -4,23 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--Chat项目    2023/12/1  15:27:43-->
 <mapper namespace="com.example.springbootchat.model.mapperInterface.UserMapper">
-    <select id="selectUserById" resultType="com.example.springbootchat.model.entry.User">
+    <select id="selectUserById" resultType="com.example.springbootchat.model.entity.User">
         select id, user_name, age
         from users
         where id = #{id};
     </select>
-    <select id="selectUserByName" resultType="com.example.springbootchat.model.entry.User">
+    <select id="selectUserByName" resultType="com.example.springbootchat.model.entity.User">
         select id, user_name, age
         from users
         where user_name = #{name};
     </select>
-    <select id="selectUserByNameAndPassword" resultType="com.example.springbootchat.model.entry.User">
+    <select id="selectUserByNameAndPassword" resultType="com.example.springbootchat.model.entity.User">
         select id, user_name, age
         from users
         where user_name = #{userName}
           and password = #{password};
     </select>
-    <select id="selectFriendById" resultType="com.example.springbootchat.model.entry.User">
+    <select id="selectFriendById" resultType="com.example.springbootchat.model.entity.User">
         select id, user_name, age
         from users
         where id in (select distinct vid from messages where pid = #{id});

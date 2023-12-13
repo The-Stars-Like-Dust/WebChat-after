@@ -1,4 +1,4 @@
-package com.example.springbootchat.model.entry;
+package com.example.springbootchat.model.entity;
 
 import lombok.Data;
 

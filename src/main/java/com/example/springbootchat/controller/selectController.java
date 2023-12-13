@@ -1,8 +1,8 @@
 package com.example.springbootchat.controller;
 
-import com.example.springbootchat.model.entry.Message;
-import com.example.springbootchat.model.entry.User;
-import com.example.springbootchat.model.entry.friendRequest;
+import com.example.springbootchat.model.entity.Message;
+import com.example.springbootchat.model.entity.User;
+import com.example.springbootchat.model.entity.friendRequest;
 import com.example.springbootchat.model.mapperInterface.FriendRequestMapper;
 import com.example.springbootchat.model.mapperInterface.MessageMapper;
 import com.example.springbootchat.model.mapperInterface.UserMapper;
