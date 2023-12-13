@@ -18,7 +18,7 @@ import java.util.Random;
 
 @RestController()
 @RequestMapping("/sel")
-@CrossOrigin("https://lt.ximuliunian.top")
+@CrossOrigin()
 public class selectController {
     static HashMap<String, String> userMap = new HashMap<>();
     @Autowired

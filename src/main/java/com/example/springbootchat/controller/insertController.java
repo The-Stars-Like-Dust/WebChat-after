@@ -18,7 +18,7 @@ import java.util.Map;
 
 @RestController()
 @RequestMapping("/ins")
-@CrossOrigin("https://lt.ximuliunian.top")
+@CrossOrigin()
 public class insertController {
     @Autowired
     private SessionRepository sessionRepository;
