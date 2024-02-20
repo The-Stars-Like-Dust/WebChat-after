@@ -1,10 +1,12 @@
 package com.example.springbootchat.model.mapperInterface;
 
 import com.example.springbootchat.model.entity.friendRequest;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public interface FriendRequestMapper {
 
     /**

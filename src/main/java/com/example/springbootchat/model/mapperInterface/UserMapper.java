@@ -2,10 +2,12 @@ package com.example.springbootchat.model.mapperInterface;
 
 import com.example.springbootchat.model.entity.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public interface UserMapper {
     User selectUserById(int id);
 
