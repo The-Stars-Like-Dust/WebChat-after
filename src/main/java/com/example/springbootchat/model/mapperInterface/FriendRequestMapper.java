@@ -1,12 +1,14 @@
 package com.example.springbootchat.model.mapperInterface;
 
 import com.example.springbootchat.model.entity.friendRequest;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 import java.util.Map;
 
-@Repository
+@Mapper
+@Scope("request")
 public interface FriendRequestMapper {
 
     /**
