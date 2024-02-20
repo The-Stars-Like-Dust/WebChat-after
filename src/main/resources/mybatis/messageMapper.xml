@@ -12,6 +12,7 @@
         <association property="user2" column="vid"
                      select="com.example.springbootchat.model.mapperInterface.UserMapper.selectUserById"/>
     </resultMap>
+
     <delete id="deleteMessage">
         delete
         from messages

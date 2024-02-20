@@ -4,8 +4,6 @@ package com.example.springbootchat.AOP;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,8 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class ExceptionAop {
     private static BufferedWriter writer = null;
     private static FileWriter fileWriter = null;

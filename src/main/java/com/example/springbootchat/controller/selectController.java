@@ -7,14 +7,18 @@ import com.example.springbootchat.model.mapperInterface.FriendRequestMapper;
 import com.example.springbootchat.model.mapperInterface.MessageMapper;
 import com.example.springbootchat.model.mapperInterface.UserMapper;
 import com.example.springbootchat.repository.SessionRepository;
+import jakarta.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @RestController()
 @RequestMapping("/sel")
@@ -23,6 +27,8 @@ public class selectController {
     static HashMap<String, String> userMap = new HashMap<>();
     @Autowired
     private SessionRepository sessionRepository;
+    @Resource
+    RedisTemplate<String, String> redisTemplate;
 
     public selectController() {
     }
@@ -36,6 +42,15 @@ public class selectController {
             User user = userMapper.selectUserByNameAndPassword(userName, password);
             if (user == null) {
                 return "passwordError";
+            }
+            //查找是否已经登录
+            ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+            String key = "user_" + user.getId();
+            String value = valueOperations.get(key);
+            if (value != null) {
+                return null;
+            } else {
+                valueOperations.set(key, "1", 10, TimeUnit.SECONDS);
             }
             int i = new Random().nextInt();
             String t = Integer.toString(i);

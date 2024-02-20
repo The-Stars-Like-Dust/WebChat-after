@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin()
+@CrossOrigin(origins = "https://lt.ximuliunian.top", allowCredentials = "true")
 @Controller()
 @RequestMapping("/captcha")
 public class CaptchaQuery {
@@ -28,6 +28,12 @@ public class CaptchaQuery {
         if (lineCaptcha == null) {
             return false;
         }
-        return lineCaptcha.verify(code);
+        Boolean verify = lineCaptcha.verify(code);
+        if (verify) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

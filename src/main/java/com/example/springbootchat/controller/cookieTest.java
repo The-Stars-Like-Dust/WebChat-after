@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"http://192.168.138.1:63342/", "http://localhost:8081/"}, allowCredentials = "true")
+@CrossOrigin()
 public class cookieTest {
     @PostMapping("/cookie")
     public String cookieTest(HttpSession session) {
