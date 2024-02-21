@@ -3,7 +3,7 @@ package com.example.springbootchat.controller;
 import com.example.springbootchat.service.friendRequestService.FriendRequestInsertService;
 import com.example.springbootchat.service.messagesService.MessageInsertService;
 import com.example.springbootchat.service.userService.UserInsertService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -12,11 +12,11 @@ import java.util.Map;
 @RequestMapping("/ins")
 @CrossOrigin()
 public class insertController {
-    @Autowired
+    @Resource
     private UserInsertService userInsertService;
-    @Autowired
+    @Resource
     private MessageInsertService messageInsertService;
-    @Autowired
+    @Resource
     private FriendRequestInsertService friendRequestInsertService;
 
     @PostMapping("/user")

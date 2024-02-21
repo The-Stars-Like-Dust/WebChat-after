@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "https://lt.ximuliunian.top", allowCredentials = "true")
+@CrossOrigin(origins = {"https://lt.ximuliunian.top", "http://192.168.138.1:5500"}, allowCredentials = "true")
 @Controller()
 @RequestMapping("/captcha")
 public class CaptchaQuery {
