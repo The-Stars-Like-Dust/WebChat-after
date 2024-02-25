@@ -50,6 +50,10 @@ public class UserSelectService {
         return t;
     }
 
+    public User selectUserObject(String userName, String password) {
+        return userMapper.selectUserByNameAndPassword(userName, password);
+    }
+
     public HashMap<String, String> selectUuid(String uuid) {
         String s1 = userMap.get(uuid);
         if (s1 == null) {

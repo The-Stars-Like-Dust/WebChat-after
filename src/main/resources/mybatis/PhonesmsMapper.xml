@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootchat.model.mapperInterface.PhonesmsMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.springbootchat.model.entity.Phonesms">
+        <id property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="everyDayCount" column="every_day_count" jdbcType="INTEGER"/>
+        <result property="everyWeekCount" column="every_week_count" jdbcType="INTEGER"/>
+        <result property="everyMonthCount" column="every_month_count" jdbcType="INTEGER"/>
+        <result property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="mostRecentCode" column="most_recent_code" jdbcType="VARCHAR"/>
+        <result property="mostRecentTime" column="most_recent_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        phone,every_day_count,every_week_count,
+        every_month_count,uid,most_recent_code,
+        most_recent_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from phonesms
+        where phone = #{phone,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from phonesms
+        where phone = #{phone,jdbcType=VARCHAR}
+    </delete>
+    <update id="delCode">
+        update phonesms
+        set most_recent_code = null
+        where phone = #{phone,jdbcType=VARCHAR}
+    </update>
+    <insert id="insert" keyColumn="phone" keyProperty="phone"
+            parameterType="com.example.springbootchat.model.entity.Phonesms" useGeneratedKeys="true">
+        insert into phonesms
+        ( phone, every_day_count, every_week_count
+        , every_month_count, uid, most_recent_code
+        , most_recent_time)
+        values ( #{phone,jdbcType=VARCHAR}, #{everyDayCount,jdbcType=INTEGER}, #{everyWeekCount,jdbcType=INTEGER}
+               , #{everyMonthCount,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{mostRecentCode,jdbcType=VARCHAR}
+               , #{mostRecentTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="phone" keyProperty="phone"
+            parameterType="com.example.springbootchat.model.entity.Phonesms" useGeneratedKeys="true">
+        insert into phonesms
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="phone != null">phone,</if>
+            <if test="everyDayCount != null">every_day_count,</if>
+            <if test="everyWeekCount != null">every_week_count,</if>
+            <if test="everyMonthCount != null">every_month_count,</if>
+            <if test="uid != null">uid,</if>
+            <if test="mostRecentCode != null">most_recent_code,</if>
+            <if test="mostRecentTime != null">most_recent_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="phone != null">#{phone,jdbcType=VARCHAR},</if>
+            <if test="everyDayCount != null">#{everyDayCount,jdbcType=INTEGER},</if>
+            <if test="everyWeekCount != null">#{everyWeekCount,jdbcType=INTEGER},</if>
+            <if test="everyMonthCount != null">#{everyMonthCount,jdbcType=INTEGER},</if>
+            <if test="uid != null">#{uid,jdbcType=INTEGER},</if>
+            <if test="mostRecentCode != null">#{mostRecentCode,jdbcType=VARCHAR},</if>
+            <if test="mostRecentTime != null">#{mostRecentTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootchat.model.entity.Phonesms">
+        update phonesms
+        <set>
+            <if test="everyDayCount != null">
+                every_day_count = #{everyDayCount,jdbcType=INTEGER},
+            </if>
+            <if test="everyWeekCount != null">
+                every_week_count = #{everyWeekCount,jdbcType=INTEGER},
+            </if>
+            <if test="everyMonthCount != null">
+                every_month_count = #{everyMonthCount,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="mostRecentCode != null">
+                most_recent_code = #{mostRecentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="mostRecentTime != null">
+                most_recent_time = #{mostRecentTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where phone = #{phone,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.springbootchat.model.entity.Phonesms">
+        update phonesms
+        set every_day_count   = #{everyDayCount,jdbcType=INTEGER},
+            every_week_count  = #{everyWeekCount,jdbcType=INTEGER},
+            every_month_count = #{everyMonthCount,jdbcType=INTEGER},
+            uid               = #{uid,jdbcType=INTEGER},
+            most_recent_code  = #{mostRecentCode,jdbcType=VARCHAR},
+            most_recent_time  = #{mostRecentTime,jdbcType=TIMESTAMP}
+        where phone = #{phone,jdbcType=VARCHAR}
+    </update>
+    <select id="selectMostRecentTimeByPrimaryKey" resultType="java.util.Date">
+        select most_recent_time
+        from phonesms
+        where phone = #{phone,jdbcType=INTEGER}
+    </select>
+    <update id="sendingATextMessage">
+        update phonesms
+        set most_recent_code  = #{mostRecentCode,jdbcType=VARCHAR},
+            most_recent_time  = #{mostRecentTime,jdbcType=TIMESTAMP},
+            every_day_count   = every_day_count + 1,
+            every_week_count  = every_week_count + 1,
+            every_month_count = every_month_count + 1
+        where phone = #{phone,jdbcType=INTEGER}
+    </update>
+    <update id="setPhoneUser">
+        update phonesms
+        set uid = #{uid,jdbcType=INTEGER}
+        where phone = #{phone,jdbcType=VARCHAR}
+    </update>
+</mapper>

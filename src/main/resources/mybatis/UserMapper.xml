@@ -25,7 +25,7 @@
         from users
         where id in (select distinct vid from messages where pid = #{id});
     </select>
-    <insert id="insertUser" parameterType="map">
+    <insert id="insertUser" parameterType="map" useGeneratedKeys="true" keyProperty="id">
         insert into users (user_name, password, age)
         values (#{userName}, #{password}, #{age});
     </insert>
