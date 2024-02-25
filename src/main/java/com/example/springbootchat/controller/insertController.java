@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @RestController()
 @RequestMapping("/ins")
-@CrossOrigin()
+@CrossOrigin(origins = {"https://lt.ximuliunian.top", "http://192.168.138.1:5500"}, allowCredentials = "true")
 public class insertController {
     @Resource
     private UserInsertService userInsertService;

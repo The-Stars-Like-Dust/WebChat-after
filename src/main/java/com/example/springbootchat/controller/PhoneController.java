@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  * 这是一个处理电话相关操作的控制器类。
  * 它允许客户端发送短信和检查电话号码的有效性。
  */
-@CrossOrigin
+@CrossOrigin(origins = {"https://lt.ximuliunian.top", "http://192.168.138.1:5500"}, allowCredentials = "true")
 @Controller
 public class PhoneController {
     @Resource

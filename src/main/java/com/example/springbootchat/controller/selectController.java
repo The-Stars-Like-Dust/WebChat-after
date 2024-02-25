@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController()
 @RequestMapping("/sel")
-@CrossOrigin()
+@CrossOrigin(origins = {"https://lt.ximuliunian.top", "http://192.168.138.1:5500"}, allowCredentials = "true")
 public class selectController {
     /**
      * 存储加密cookie的密钥的id的延迟队列，延迟时间与cookie的过期时间保持一致
@@ -151,7 +151,7 @@ public class selectController {
      * @throws BadPaddingException
      * @throws NoSuchPaddingException
      */
-    @CrossOrigin(origins = {"https://lt.ximuliunian.top", "http://192.168.138.1:5500"}, allowCredentials = "true")
+
     @PostMapping("/users")
     public String selectUser(@CookieValue(value = "un", required = false) String un,
                              @CookieValue(value = "pw", required = false) String pw,

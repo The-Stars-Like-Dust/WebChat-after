@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Transactional(readOnly = true)
 @Service
 public class UserSelectService {
-    private static HashMap<String, String> userMap = new HashMap<>();
+    private static final HashMap<String, String> userMap = new HashMap<>();
     @Resource
     private UserMapper userMapper;
     @Resource

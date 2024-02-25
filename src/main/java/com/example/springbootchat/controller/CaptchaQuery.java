@@ -43,13 +43,12 @@ public class CaptchaQuery {
      */
     @GetMapping("/verify/{code}")
     @ResponseBody
-    public boolean verifyCaptcha(@PathVariable("code") String code, HttpSession session) {
+    public boolean verifyCaptcha(@PathVariable(name = "code") String code, HttpSession session) {
         LineCaptcha lineCaptcha = (LineCaptcha) session.getAttribute("lineCaptcha");
         if (lineCaptcha == null) {
             return false;
         }
         Boolean verify = lineCaptcha.verify(code);
         return verify;
-
     }
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * 它使用Redis作为存储，当用户的登录状态被验证时，会重置其在Redis中的过期时间。
  */
 @Controller
-@CrossOrigin
+@CrossOrigin(origins = {"https://lt.ximuliunian.top", "http://192.168.138.1:5500"}, allowCredentials = "true")
 public class MaintainYourLogin {
     // 注入RedisTemplate，用于操作Redis
     @Resource
