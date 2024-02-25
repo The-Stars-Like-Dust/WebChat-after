@@ -112,4 +112,16 @@ public class SMSService {
     public void setPhoneUser(String phone, int id) {
         phonesmsMapper.setPhoneUser(phone, (long) id);
     }
+
+    public void clearTheNumberOfSendsPerDay() {
+        phonesmsMapper.clearTheNumberOfSendsPerDay();
+    }
+
+    public void clearTheNumberOfSendsPerWeek() {
+        phonesmsMapper.clearTheNumberOfSendsPerWeek();
+    }
+
+    public void clearTheNumberOfSendsPerMonth() {
+        phonesmsMapper.clearTheNumberOfSendsPerMonth();
+    }
 }

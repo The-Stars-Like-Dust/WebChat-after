@@ -19,12 +19,6 @@ public class UserInsertService {
 
 
     public String insertUser(String username, String password, String phone) {
-        if (username == null || password == null) {
-            return "stringError";
-        }
-        if (username.length() > 20 || password.length() > 20 || username.length() < 6 || password.length() < 6) {
-            return "lengthError";
-        }
         if (userMapper.selectUserByName(username) != null) {
             return "existError";
         }

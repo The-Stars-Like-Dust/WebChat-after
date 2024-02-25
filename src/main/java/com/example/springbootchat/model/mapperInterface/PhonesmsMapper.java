@@ -32,4 +32,10 @@ public interface PhonesmsMapper {
     int delCode(String phone);
 
     int setPhoneUser(@Param("phone") String phone, @Param("uid") Long id);
+
+    void clearTheNumberOfSendsPerDay();
+
+    void clearTheNumberOfSendsPerWeek();
+
+    void clearTheNumberOfSendsPerMonth();
 }

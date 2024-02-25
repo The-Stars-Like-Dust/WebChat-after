@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>springboot-chat</artifactId>
-    <version>2.0.21+手机号注册+文档注释</version>
+    <version>2.0.23+验证码bug处理</version>
     <name>springboot-chat</name>
     <description>springboot-chat</description>
     <properties>

@@ -122,4 +122,16 @@
         set uid = #{uid,jdbcType=INTEGER}
         where phone = #{phone,jdbcType=VARCHAR}
     </update>
+    <update id="clearTheNumberOfSendsPerDay">
+        update phonesms
+        set every_day_count = 0
+    </update>
+    <update id="clearTheNumberOfSendsPerWeek">
+        update phonesms
+        set every_week_count = 0
+    </update>
+    <update id="clearTheNumberOfSendsPerMonth">
+        update phonesms
+        set every_month_count = 0
+    </update>
 </mapper>

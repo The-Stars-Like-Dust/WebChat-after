@@ -43,6 +43,12 @@ public class insertController {
         String password = map.get("password");
         String phone = map.get("phone");
         String code = map.get("code");
+        if (userName == null || password == null) {
+            return "stringError";
+        }
+        if (userName.length() > 20 || password.length() > 20 || userName.length() < 6 || password.length() < 6) {
+            return "lengthError";
+        }
         Phonesms phonesms = smsService.selectByPrimaryKey(phone);
         if (phonesms.getUid() != null) {
             return "-2"; //手机号已被注册
